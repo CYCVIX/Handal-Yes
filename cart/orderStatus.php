@@ -17,6 +17,7 @@
 						<th>Status</th>
 						<th>Harga</th>
 						<th>Subtotal</th>
+						<th>Nomer Resi</th>
 					</tr>
 				</thead>
 				<?php
@@ -24,6 +25,7 @@
 				WHERE a.order_id = '".$_SESSION['order_id']."'");
 				$no = 1;
 				while($row = mysqli_fetch_array($query)){
+					$total = 0;
 					$totalDisc = $row['price']-($row['price'] * $row['disc']/100);
 					$subtotal = $row['qty'] * $totalDisc;
 					$total = $total + $subtotal;
@@ -44,6 +46,7 @@
 					<td align="center"><?php echo $row['order_status']; ?></td>
 					<td align="center"><?php echo 'Rp '.number_format($row['price'],0,".","."); ?></td>
 					<td align="center"><?php echo 'Rp '.number_format($subtotal,0,".","."); ?></td>
+					<td align="center"><?php echo $row['Resi']; ?></td>
 				</tr>
 				<?php
 				$no++;
