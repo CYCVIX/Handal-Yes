@@ -180,6 +180,7 @@ ob_start();
 					$error = false;
 					$order = "";
 					$orderErr = "";
+					$Nresi ="";
 							
 					if(isset($_POST['update'])){
 								
@@ -190,6 +191,12 @@ ob_start();
 							}else{
 								$order = $_POST['orderstatus'];
 							}
+						}
+						if(empty($_POST['Resi'])){
+							$error = true;
+							$Nresi = "Masukan nomer resi";
+						}else{
+							$address = $_POST['Resi'];
 						}
 								
 						if(!$error){
@@ -251,6 +258,14 @@ ob_start();
 									<span class="text-danger"><?php echo $orderErr ; ?></span>
 								</div>
 							</div>
+							<div class="form-group">
+								<label class="col-md-2 control-label">Resi : </label>
+								<div class="col-md-10">
+									<input type="text" class="form-control" name="state" placeholder="Masukan nomer resi" value="<?php echo isset($Nresi) ? $Nresi : ' ';?>">
+									<span class="text-danger msg-error"><?php echo $Nresi; ?></span>
+									<label class="control-label"><?php echo $data['Resi']; ?></label>
+								</div>
+							</div>
 							<!-- Button -->
 							<div class="form-group">
 								<label class="col-md-2 control-label"></label>
@@ -270,14 +285,21 @@ ob_start();
 										<th>Kode Produk</th>
 										<th>Gambar</th>
 										<th>Nama Produk</th>
-										<th>Warna</th>
+										<th>Nomer Resi</th>
 										<th>Ukuran</th>
 										<th>Jumlah</th>
 									</tr>
 								</thead>
 								<tbody>
 								<?php
-								$query = mysqli_query($conn, "SELECT * FROM order_detail WHERE order_id = '".$_GET['id']."'");
+								$query = mysqli_query($conn, "SELECT order_detail.item_code, order_detail.bgimg, items.item_name,	orders.Resi, items.size, order_detail.qty FROM order_detail 
+                                JOIN orders
+  								ON order_detail.order_id = orders.order_id
+                                JOIN items 
+                                ON order_detail.item_code = items.item_id
+                                JOIN  colors
+                                ON items.clr_id = colors.clr_id
+                                WHERE order_detail.order_id = '".$_GET['id']."'");
 								$no = 1;
 								while($row = mysqli_fetch_array($query)){
 								?>
@@ -286,7 +308,7 @@ ob_start();
 										<td width="10" align="center"><?php echo $row['item_code']; ?></td>
 										<td align="center"><img src="img/<?php echo $row['bgimg']; ?>" class="img-small"></td>
 										<td><?php echo $row['item_name']; ?></td>
-										<td align="center"><?php echo $row['color']; ?></td>
+										<td align="center"><?php echo $row['Resi']; ?></td>
 										<td align="center"><?php echo $row['size']; ?></td>
 										<td align="center"><?php echo $row['qty']; ?></td>
 									</tr>
