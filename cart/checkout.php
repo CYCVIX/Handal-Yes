@@ -13,8 +13,8 @@
 		}
 		
 		$error = false;
-		$name = $email = $address = $city = $state = $postcode = $phone = $owner = $cardbank = $cardnumber = $pay = "";
-		$nameErr = $emailErr = $addressErr = $cityErr = $stateErr = $postcodeErr = $phoneErr = $ownerErr = $cardbankErr = $cardnumberErr = $payErr = "";
+		$name = $email = $address = $city = $state = $postcode = $phone = $owner = $cardbank = $cardnumber = $pay = $nResi = "";
+		$nameErr = $emailErr = $addressErr = $cityErr = $stateErr = $postcodeErr = $phoneErr = $ownerErr = $cardbankErr = $cardnumberErr = $payErr = $resiErr = "";
 		
 		if(isset($_POST['checkout'])){
 			if($_SERVER['REQUEST_METHOD'] == "POST"){
@@ -149,7 +149,7 @@
 					$regdate = date('Y-m-d');
 					$regtime = date('G:i:s');
 					
-					$result = mysqli_query($conn,"INSERT INTO orders VALUES('".$id."','".$member."','".$owner."','".$cardbank."','".$cardnumber."','PAID','".$pay."','".$regdate."','".$regtime."','PENDING','".$regdate."','".$regtime."')");
+					$result = mysqli_query($conn,"INSERT INTO orders VALUES('".$id."','".$member."','".$owner."','".$cardbank."','".$cardnumber."','PAID','".$pay."','".$regdate."','".$regtime."','PENDING','".$regdate."','".$regtime."','".$nResi."')");
 					if(!$result){
 						die('Invalid query:'.mysqli_error($conn));
 					}

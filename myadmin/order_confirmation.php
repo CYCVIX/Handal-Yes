@@ -181,6 +181,7 @@ ob_start();
 					$order = "";
 					$orderErr = "";
 					$Nresi ="";
+					$resiErr ="";
 							
 					if(isset($_POST['update'])){
 								
@@ -194,9 +195,13 @@ ob_start();
 						}
 						if(empty($_POST['Resi'])){
 							$error = true;
-							$Nresi = "Masukan nomer resi";
+							$resiErr = "Isi Nomor Resi";
 						}else{
-							$address = $_POST['Resi'];
+							$Nresi = $_POST['Resi'];
+							if(!preg_match("/^[a-zA-Z0-9 .\-&]+$/i",$_POST['Resi'])){
+								$error = true;
+								$resiErr = "Nomor Resi Jangan Dikosongkan";
+							}
 						}
 								
 						if(!$error){
@@ -204,7 +209,7 @@ ob_start();
 							$regdate = date('Y-m-d');
 							$regtime = date('G:i:s');
 							
-							mysqli_query($conn,"UPDATE orders SET order_status='".$order."', order_valid_date = '".$regdate."', order_valid_time = '".$regtime."' WHERE order_id='".$id."'");
+							mysqli_query($conn,"UPDATE orders SET order_status='".$order."', order_valid_date = '".$regdate."', order_valid_time = '".$regtime."', Resi = '".$Nresi."' WHERE order_id='".$id."'");
 							header('location: order_confirmation.php');
 						}
 					}
@@ -261,9 +266,8 @@ ob_start();
 							<div class="form-group">
 								<label class="col-md-2 control-label">Resi : </label>
 								<div class="col-md-10">
-									<input type="text" class="form-control" name="state" placeholder="Masukan nomer resi" value="<?php echo isset($Nresi) ? $Nresi : ' ';?>">
+									<input type="text" class="form-control" name="Resi" placeholder="Masukan nomer resi" value="<?php echo isset($Nresi) ? $Nresi : ' ';?>">
 									<span class="text-danger msg-error"><?php echo $Nresi; ?></span>
-									<label class="control-label"><?php echo $data['Resi']; ?></label>
 								</div>
 							</div>
 							<!-- Button -->

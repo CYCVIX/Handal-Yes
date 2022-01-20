@@ -4,7 +4,7 @@
 $host = "localhost";
 $user = "root";
 $pass = "";
-$dbs = "data_handal";
+$dbs = "handalyes";
 
 // Connect to MySQLi database
 $conn = mysqli_connect($host, $user, $pass, $dbs);
