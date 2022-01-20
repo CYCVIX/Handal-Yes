@@ -135,12 +135,12 @@ ob_start();
 									</tr>
 								</thead>
 								<tbody>
-		<?php
-			$sql = "SELECT * FROM orders";
-			$query = mysqli_query($conn, $sql);
-			$no = 0;
-			while($row = mysqli_fetch_assoc($query)){
-		?>
+										<?php
+											$sql = "SELECT * FROM orders";
+											$query = mysqli_query($conn, $sql);
+											$no = 0;
+											while($row = mysqli_fetch_assoc($query)){
+										?>
 									<tr>
 										<td width="10" align="center"><?php echo ++$no; ?></td>
 										<td align="center"><?php echo fixdate($row['creation_date']); ?></td>
@@ -181,6 +181,7 @@ ob_start();
 					$order = "";
 					$orderErr = "";
 					$Nresi ="";
+					$resiErr ="";
 							
 					if(isset($_POST['update'])){
 								
@@ -194,9 +195,13 @@ ob_start();
 						}
 						if(empty($_POST['Resi'])){
 							$error = true;
-							$Nresi = "Masukan nomer resi";
+							$resiErr = "Isi Nomor Resi";
 						}else{
-							$address = $_POST['Resi'];
+							$Nresi = $_POST['Resi'];
+							if(!preg_match("/^[a-zA-Z0-9 .\-&]+$/i",$_POST['Resi'])){
+								$error = true;
+								$resiErr = "Nomor Resi Jangan Dikosongkan";
+							}
 						}
 								
 						if(!$error){
@@ -204,7 +209,7 @@ ob_start();
 							$regdate = date('Y-m-d');
 							$regtime = date('G:i:s');
 							
-							mysqli_query($conn,"UPDATE orders SET order_status='".$order."', order_valid_date = '".$regdate."', order_valid_time = '".$regtime."' WHERE order_id='".$id."'");
+							mysqli_query($conn,"UPDATE orders SET order_status='".$order."', order_valid_date = '".$regdate."', order_valid_time = '".$regtime."', Resi = '".$Nresi."' WHERE order_id='".$id."'");
 							header('location: order_confirmation.php');
 						}
 					}
@@ -261,9 +266,8 @@ ob_start();
 							<div class="form-group">
 								<label class="col-md-2 control-label">Resi : </label>
 								<div class="col-md-10">
-									<input type="text" class="form-control" name="state" placeholder="Masukan nomer resi" value="<?php echo isset($Nresi) ? $Nresi : ' ';?>">
+									<input type="text" class="form-control" name="Resi" placeholder="Masukan nomer resi" value="<?php echo isset($Nresi) ? $Nresi : ' ';?>">
 									<span class="text-danger msg-error"><?php echo $Nresi; ?></span>
-									<label class="control-label"><?php echo $data['Resi']; ?></label>
 								</div>
 							</div>
 							<!-- Button -->
@@ -286,19 +290,16 @@ ob_start();
 										<th>Gambar</th>
 										<th>Nama Produk</th>
 										<th>Nomer Resi</th>
-										<th>Ukuran</th>
 										<th>Jumlah</th>
 									</tr>
 								</thead>
 								<tbody>
 								<?php
-								$query = mysqli_query($conn, "SELECT order_detail.item_code, order_detail.bgimg, items.item_name,	orders.Resi, items.size, order_detail.qty FROM order_detail 
+								$query = mysqli_query($conn, "SELECT order_detail.item_code, order_detail.bgimg, product.item_name,	orders.Resi, order_detail.qty FROM order_detail 
                                 JOIN orders
   								ON order_detail.order_id = orders.order_id
-                                JOIN items 
-                                ON order_detail.item_code = items.item_id
-                                JOIN  colors
-                                ON items.clr_id = colors.clr_id
+                                JOIN product
+                                ON order_detail.item_code = product.item_id
                                 WHERE order_detail.order_id = '".$_GET['id']."'");
 								$no = 1;
 								while($row = mysqli_fetch_array($query)){
@@ -309,7 +310,6 @@ ob_start();
 										<td align="center"><img src="img/<?php echo $row['bgimg']; ?>" class="img-small"></td>
 										<td><?php echo $row['item_name']; ?></td>
 										<td align="center"><?php echo $row['Resi']; ?></td>
-										<td align="center"><?php echo $row['size']; ?></td>
 										<td align="center"><?php echo $row['qty']; ?></td>
 									</tr>
 								<?php
@@ -424,8 +424,6 @@ ob_start();
 												<div class="table-column-right">
 													Kode : <?php echo $row['item_code']; ?><br/>
 													Nama : <?php echo $row['item_name']; ?><br/>
-													Warna : <?php echo $row['color']; ?><br/>
-													Ukuran : <?php echo $row['size']; ?><br/>
 												</div>
 											</td>
 											<td align="center"><?php echo $row['qty']; ?></td>
@@ -456,7 +454,7 @@ ob_start();
 				$id = $_GET['id'];
 				$qty = $_GET['qty'];
 				$query = "DELETE orders, order_detail FROM orders INNER JOIN order_detail ON order_detail.order_id = orders.order_id WHERE orders.order_id = '$id'";
-				mysqli_query($conn,"UPDATE items INNER JOIN order_detail ON order_detail.item_code = items.item_id SET items.stock = items.stock + order_detail.qty WHERE items.item_id = '$qty'");
+				mysqli_query($conn,"UPDATE product INNER JOIN order_detail ON order_detail.item_code = product.item_id SET product.stock = product.stock + order_detail.qty WHERE product.item_id = '$qty'");
 				
 				if(!$res = mysqli_query($conn,$query)){
 					exit(mysqli_error($conn));

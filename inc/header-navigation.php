@@ -26,6 +26,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown">Pengaturan<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="../index.php?p=profil">Profil Saya</a></li>
+						<li><a href="../index.php?p=history">History Pesanan</a></li>
 						<li><a href="../index.php?&p=logout">Keluar</a></li>
 					</ul>
 				</li>

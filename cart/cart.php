@@ -11,6 +11,7 @@
 					<th>Diskon</th>
 					<th>Harga</th>
 					<th>Total</th>
+					<th>Nomer resi</th>
 					<th>Hapus</th>
 				</tr>
 			</thead>
@@ -18,6 +19,7 @@
 			if(!empty($_SESSION["cart"])){
 				$total = 0;
 				foreach ($_SESSION["cart"] as $keys => $values) {
+					$total = 0;
 					$totalDisc = $values['price']-($values['price'] * $values['disc']/100);
 					$subtotal = $values['qty'] * $totalDisc;
 					$total = $total + $subtotal;
@@ -36,6 +38,7 @@
 				<td align="center"><?php echo $values['disc']; ?>%</td>
 				<td align="center"><?php echo 'Rp '.number_format($values['price'],0,".","."); ?></td>
 				<td align="center"><?php echo 'Rp '.number_format($subtotal,0,".","."); ?></td>
+				<td align="center"><?php echo $values['Resi']; ?></td>
 				<td align="center"><a href="../index.php?p=cart&item=<?php echo $values['product_id']; ?>"><i class="fa fa-times-circle-o"></i></a></td>
 			</tr>
 			<?php

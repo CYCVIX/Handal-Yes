@@ -85,6 +85,12 @@ if(@$_GET){
 		case "panasonicGearMotor":
 			include "subkat/panasonicGearMotor.php";
 		break;
+		case "history":
+			include "user/history.php";
+		break;
+		case "invoice":
+			include "cart/invoice.php";
+		break;
 		default:
 			echo '<div class="container">
 							<div class="row">
