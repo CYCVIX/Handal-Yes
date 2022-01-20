@@ -25,7 +25,7 @@
 			<tr>
 				<td align="center">
 					<div class="table-column-left">
-						<img src="../miiadmin/img/<?php echo $values['item_img']; ?>" class="img-small">
+						<img src="../myadmin/img/<?php echo $values['item_img']; ?>" class="img-small">
 					</div>
 					<div class="table-column-right">
 						Kode : <?php echo $values['product_id']; ?><br/>

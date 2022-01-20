@@ -82,7 +82,7 @@
 					<ul class="dropdown-menu mega-dropdown-menu">
 						<li class="col-sm-6">
 							<ul>
-								<li><a href="../index.php?p=panasonicPLC">Compact AC Gear Motor</a></li>
+								<li><a href="../index.php?p=panasonicGearMotor">Compact AC Gear Motor</a></li>
 								<hr>
 								<li><a href="../index.php?p=omronPLC">AC Servo</a></li>
 								<hr>
@@ -106,7 +106,7 @@
                     <li class="dropdown-item dropdown">
                         <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Panasonic</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
-                            <li class="dropdown-item" href="#"><a>Compact AC Gear Motor</a></li>
+                            <li><a href="../index.php?p=panasonicGearMotor">Compact AC Gear Motor</a></li>
 							<li class="dropdown-item" href="#"><a>AC Servo</a></li>
 							<li class="dropdown-item" href="#"><a>AC Servo Drive</a></li>
 							<li class="dropdown-item" href="#"><a>AC Servo Motor</a></li>

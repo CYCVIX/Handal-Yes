@@ -87,7 +87,7 @@
 				<div class="col-md-3 col-xs-6 product-left">
 					<div class="p-one">
 						<a href="../index.php?p=single&id=<?php echo $row['item_id']; ?>">
-							<img src="../miiadmin/img/<?php echo $row['bgimg']; ?>"/>
+							<img src="../myadmin/img/<?php echo $row['bgimg']; ?>"/>
 							<div class="mask">
 								<a href="../index.php?p=single&id=<?php echo $row['item_id']; ?>"><span>Lihat Detail</span></a>
 							</div>

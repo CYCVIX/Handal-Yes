@@ -1,4 +1,5 @@
 <!-- Footer -->
+<br><br><br><br>
 <div class="footer-top">
 	<div class="container">
 		<div class="col-lg-3 footer-grid">
@@ -61,7 +62,7 @@
 				<i class="glyphicon glyphicon-bell"></i>
 				<div class="contact1">
 					<h3>Jam Pelayanan</h3>
-					<p>07.30 - 16.30/p>
+					<p>07.30 - 16.30</p>
 				</div>
 				<div class="clearfix"></div>
 			</div>

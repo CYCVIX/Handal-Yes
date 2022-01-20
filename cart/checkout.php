@@ -160,7 +160,7 @@
 						$order_detail = "INSERT INTO order_detail VALUES (NULL,'".$order_id."','".$values['item_img']."','".$values['product_id']."','".$values['item_name']."','".$values['qty']."','".$values['disc']."','".$values['price']."')";
 						if(mysqli_query($conn, $order_detail)){
 							unset($_SESSION['cart']);
-							echo "<script>document.location = '../index.php?p=order'; </script>";
+							echo "<script>document.location = '../index.php?p=orderStatus'; </script>";
 						}
 						mysqli_query($conn,"UPDATE items SET stock = stock -'".$values['qty']."' WHERE item_id = '".$values['product_id']."'");
 						$qry = mysqli_query($conn, "SELECT * FROM items WHERE stock='0' AND item_id = '".$values['product_id']."'");

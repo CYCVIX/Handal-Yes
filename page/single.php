@@ -17,7 +17,7 @@
 					<?php
 						$temp = explode(',', $data['image']);
 						for($i = 0; $i < count($temp); $i++){
-							echo '<li data-thumb="../miiadmin/img/'.trim($temp[$i]).'"><div class="thumb-image"><img src="../miiadmin/img/'.trim($temp[$i]).'" 
+							echo '<li data-thumb="../myadmin/img/'.trim($temp[$i]).'"><div class="thumb-image"><img src="../myadmin/img/'.trim($temp[$i]).'" 
 							class="img-responsive" /></div></li>';
 						}
 					?>

@@ -91,7 +91,7 @@
 					<td align="center"><?php echo $no; ?></td>
 					<td>
 						<div class="table-column-left">
-							<img src="../miiadmin/img/<?php echo $row['bgimg']; ?>" class="img-small">
+							<img src="../myadmin/img/<?php echo $row['bgimg']; ?>" class="img-small">
 						</div>
 						<div class="table-column-right">
 							Kode : <?php echo $row['item_code']; ?><br/>

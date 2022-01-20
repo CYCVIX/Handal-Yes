@@ -16,7 +16,7 @@ while($row = mysqli_fetch_array($query)){
 	echo '<div class="col-md-3 col-xs-6 product-left">
 					<div class="p-one">
 						<a href="#">
-							<img src="miiadmin/img/'.$row['bgimg'].'"/>
+							<img src="myadmin/img/'.$row['bgimg'].'"/>
 							<div class="mask">
 								<a href="index.php?p=single&id='.$row['item_id'].'"><span>Quick View</span></a>
 							</div>

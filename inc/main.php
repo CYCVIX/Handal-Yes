@@ -82,6 +82,9 @@ if(@$_GET){
 		case "orderStatus";
 			include "cart/orderStatus.php";
 		break;
+		case "panasonicGearMotor":
+			include "subkat/panasonicGearMotor.php";
+		break;
 		default:
 			echo '<div class="container">
 							<div class="row">
