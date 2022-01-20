@@ -49,7 +49,6 @@
 				$no++;
 				}
 				?>
-				?>
 				<tr>
 					<td colspan="5" align="right">Total</td>
 					<td align="center"><?php echo 'Rp '.number_format($total,0,".","."); ?></td>
