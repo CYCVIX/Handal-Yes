@@ -85,6 +85,39 @@ if(@$_GET){
 		case "panasonicGearMotor":
 			include "subkat/panasonicGearMotor.php";
 		break;
+		case "panasonicACServo":
+			include "subkat/panasonicACServo.php";
+		break;
+		case "panasonicACServoDrive":
+			include "subkat/panasonicACServoDrive.php";
+		break;
+		case "panasonicACServoMotor":
+			include "subkat/panasonicACMotor.php";
+		break;
+		case "panasonicSensor":
+			include "subkat/panasonicSensor.php";
+		break;
+		case "panasonicProgrammableController":
+			include "subkat/panasonicProgrammableController.php";
+		break;
+		case "shimpoGearboxInline":
+			include "subkat/shimpoGearboxInline.php";
+		break;
+		case "shimpoGearboxRightAngle":
+			include "subkat/shimpoGearboxRightAngle.php";
+		break;
+		case "shimpoClycloidalGear":
+			include "subkat/shimpoCycloidalGear.php";
+		break;
+		case "UR3":
+			include "subkat/UR3.php";
+		break;
+		case "UR5":
+			include "subkat/UR5.php";
+		break;
+		case "UR10":
+			include "subkat/UR10.php";
+		break;
 		default:
 			echo '<div class="container">
 							<div class="row">

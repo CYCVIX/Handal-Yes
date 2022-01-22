@@ -296,13 +296,11 @@ ob_start();
 								</thead>
 								<tbody>
 								<?php
-								$query = mysqli_query($conn, "SELECT order_detail.item_code, order_detail.bgimg, items.item_name,	orders.Resi, items.size, order_detail.qty FROM order_detail 
+								$query = mysqli_query($conn, "SELECT order_detail.item_code, order_detail.bgimg, product.item_name,	orders.Resi, order_detail.qty FROM order_detail 
                                 JOIN orders
   								ON order_detail.order_id = orders.order_id
-                                JOIN items 
-                                ON order_detail.item_code = items.item_id
-                                JOIN  colors
-                                ON items.clr_id = colors.clr_id
+                                JOIN product
+                                ON order_detail.item_code = product.item_id
                                 WHERE order_detail.order_id = '".$_GET['id']."'");
 								$no = 1;
 								while($row = mysqli_fetch_array($query)){
@@ -428,8 +426,6 @@ ob_start();
 												<div class="table-column-right">
 													Kode : <?php echo $row['item_code']; ?><br/>
 													Nama : <?php echo $row['item_name']; ?><br/>
-													Warna : <?php echo $row['color']; ?><br/>
-													Ukuran : <?php echo $row['size']; ?><br/>
 												</div>
 											</td>
 											<td align="center"><?php echo $row['qty']; ?></td>
@@ -447,7 +443,7 @@ ob_start();
 										</tr>
 									</table>
 								</div>
-								<div style="margin-top:3%;"><p>Terima kasih atas pembelian Anda di MiiStore, kami senang bahwa Anda telah memilih berbelanja dengan MiiStore dan kami berharap dapat melayani Anda kembali.</p></div>
+								<div style="margin-top:3%;"><p>Terima kasih atas pembelian Anda di Handal Store, kami senang bahwa Anda telah memilih berbelanja dengan MiiStore dan kami berharap dapat melayani Anda kembali.</p></div>
 							</div>
 						</div>
 				</div>
@@ -460,7 +456,7 @@ ob_start();
 				$id = $_GET['id'];
 				$qty = $_GET['qty'];
 				$query = "DELETE orders, order_detail FROM orders INNER JOIN order_detail ON order_detail.order_id = orders.order_id WHERE orders.order_id = '$id'";
-				mysqli_query($conn,"UPDATE items INNER JOIN order_detail ON order_detail.item_code = items.item_id SET items.stock = items.stock + order_detail.qty WHERE items.item_id = '$qty'");
+				mysqli_query($conn,"UPDATE product INNER JOIN order_detail ON order_detail.item_code = product.item_id SET product.stock = product.stock + order_detail.qty WHERE product.item_id = '$qty'");
 				
 				if(!$res = mysqli_query($conn,$query)){
 					exit(mysqli_error($conn));
