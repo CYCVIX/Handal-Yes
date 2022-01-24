@@ -26,6 +26,7 @@
 					<a class="dropdown-toggle" data-toggle="dropdown">Pengaturan<span class="caret"></span></a>
 					<ul class="dropdown-menu" role="menu">
 						<li><a href="../index.php?p=profil">Profil Saya</a></li>
+						<li><a href="../index.php?p=history">History Pemesanan</a></li>
 						<li><a href="../index.php?&p=logout">Keluar</a></li>
 					</ul>
 				</li>
@@ -106,8 +107,9 @@
                     <li class="dropdown-item dropdown">
                         <a class="dropdown-toggle" id="dropdown1-1" data-toggle="dropdown" aria-haspopup="true" aria-expanded="false">Panasonic</a>
                         <ul class="dropdown-menu" aria-labelledby="dropdown1-1">
+						<ul class=
                             <li><a href="../index.php?p=panasonicGearMotor">Compact AC Gear Motor</a></li>
-							<li class="dropdown-item" href="#"><a>AC Servo</a></li>
+							<li class="dropdown-item" href="../index.php?p=panasonicGearMotor"><a>AC Servo</a></li>
 							<li class="dropdown-item" href="#"><a>AC Servo Drive</a></li>
 							<li class="dropdown-item" href="#"><a>AC Servo Motor</a></li>
 							<li class="dropdown-item" href="#"><a>Sensor</a></li>

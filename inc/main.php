@@ -4,6 +4,12 @@ if(@$_GET){
 		case "register";
 			include "user/register.php";
 		break;
+		case "history";
+			include "user/history.php";
+		break;
+		case "invoice";
+			include "cart/invoice.php";
+		break;
 		case "profil";
 			include "user/profil.php";
 		break;
@@ -117,6 +123,42 @@ if(@$_GET){
 		break;
 		case "UR10":
 			include "subkat/UR10.php";
+		break;
+		case "XE":
+			include "subkat/weintekXE.php";
+		break;
+		case "IE":
+			include "subkat/weintekIE.php";
+		break;
+		case "IP":
+			include "subkat/weintekIP.php";
+		break;
+		case "CMT":
+			include "subkat/weintekCMT.php";
+		break;
+		case "mtv":
+			include "subkat/weintekMTV.php";
+		break;
+		case "Software":
+			include "subkat/weintekSoftware.php";
+		break;
+		case "ShihlinAC":
+			include "subkat/ShihlinAcDrives.php";
+		break;
+		case "ShihlinServo":
+			include "subkat/ShihlinServoSystem.php";
+		break;
+		case "DingsStepper":
+			include "subkat/dingsStepperMotor.php";
+		break;
+		case "DingsHybrid":
+			include "subkat/dingsHybridRotary.php";
+		break;
+		case "DingsDriver":
+			include "subkat/dingsDriver.php";
+		break;
+		case "DingsBrushless":
+			include "subkat/dingsBrushless.php";
 		break;
 		default:
 			echo '<div class="container">
